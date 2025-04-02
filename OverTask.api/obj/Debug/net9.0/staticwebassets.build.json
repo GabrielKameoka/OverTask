@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "7RSS+CdI4v2HJHogxm1QM0xKSJfVQb2+2RvSoR42anU=",
+  "Source": "OverTask.api",
+  "BasePath": "_content/OverTask.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

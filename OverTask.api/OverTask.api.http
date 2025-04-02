@@ -1,0 +1,6 @@
+@OverTask.api_HostAddress = http://localhost:5245
+
+GET {{OverTask.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
