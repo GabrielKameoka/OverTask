@@ -8,7 +8,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7905413-b190-4b0f-a64b-f7ec663eaa0c" name="Changes" comment="" />
+    <list default="true" id="b7905413-b190-4b0f-a64b-f7ec663eaa0c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/OverTask.api/Controllers/TarefasController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OverTask/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OverTask/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/Migrations/OverTaskDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/Data/Migrations/OverTaskDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/Models/Enums/Categoria.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/Models/Enums/Situacao.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/Models/Tarefas.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/Models/Usuarios.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Data/OverTaskDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/Data/OverTaskDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/OverTask.api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/OverTask.api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/bin/Debug/net9.0/OverTask.api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/OverTask.api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/ref/OverTask.api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/ref/OverTask.api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/refint/OverTask.api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/Debug/net9.0/refint/OverTask.api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/OverTask.api.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/OverTask.api.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.api/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OverTask.sln" beforeDir="false" afterPath="$PROJECT_DIR$/OverTask.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +49,21 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GabrielKameoka&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GabrielKameoka/OverTask&quot;,
+    &quot;accountId&quot;: &quot;771a2c23-c510-4e51-b260-82225c9579b4&quot;
+  }
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -30,19 +77,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OverTask.api: http.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.All in OverTask.api.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OverTask.api: http.executor": "Run",
+    "HTTP Request.All in OverTask.api.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OverTask.api: http">
     <configuration name="All in OverTask.api" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/OverTask.api/OverTask.api.http">
       <method v="2" />
@@ -93,6 +142,8 @@
       <updated>1743619346395</updated>
       <workItem from="1743619349782" duration="35000" />
       <workItem from="1743619409303" duration="1722000" />
+      <workItem from="1743621240757" duration="2252000" />
+      <workItem from="1743686797565" duration="13062000" />
     </task>
     <servers />
   </component>

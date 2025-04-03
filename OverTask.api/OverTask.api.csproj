@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OverTask.Shared\OverTask.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

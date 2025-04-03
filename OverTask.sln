@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverTask.api", "OverTask.api\OverTask.api.csproj", "{52057AF6-C928-45BE-BA60-507098590A3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverTask.Shared", "OverTask.Shared\OverTask.Shared.csproj", "{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,18 @@ Global
 		{52057AF6-C928-45BE-BA60-507098590A3A}.Release|x64.Build.0 = Release|Any CPU
 		{52057AF6-C928-45BE-BA60-507098590A3A}.Release|x86.ActiveCfg = Release|Any CPU
 		{52057AF6-C928-45BE-BA60-507098590A3A}.Release|x86.Build.0 = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|x64.Build.0 = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1DBE2BB-F720-4AC4-8865-A4F1C6C4BBAE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

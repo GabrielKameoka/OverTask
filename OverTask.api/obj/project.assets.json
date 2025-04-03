@@ -1630,6 +1630,16 @@
             "rid": "win"
           }
         }
+      },
+      "OverTask.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/OverTask.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OverTask.Shared.dll": {}
+        }
       }
     }
   },
@@ -4764,6 +4774,11 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "OverTask.Shared/1.0.0": {
+      "type": "project",
+      "path": "../OverTask.Shared/OverTask.Shared.csproj",
+      "msbuildProject": "../OverTask.Shared/OverTask.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4771,7 +4786,8 @@
       "Microsoft.AspNetCore.OpenApi >= 9.0.3",
       "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.3",
-      "Microsoft.EntityFrameworkCore.Tools >= 9.0.3"
+      "Microsoft.EntityFrameworkCore.Tools >= 9.0.3",
+      "OverTask.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4806,7 +4822,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\dev\\OverTask\\OverTask.Shared\\OverTask.Shared.csproj": {
+              "projectPath": "C:\\dev\\OverTask\\OverTask.Shared\\OverTask.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

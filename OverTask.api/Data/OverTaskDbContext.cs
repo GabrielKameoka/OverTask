@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OverTask.api.Data.Models; // Certifique-se de que o namespace está correto
+using OverTask.api.Data.Models;
 
 namespace OverTask.api.Data;
 
@@ -12,5 +12,9 @@ public class OverTaskDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Tarefas>()
+            .HasOne(t => t.Usuarios)
+            .WithMany(u => u.TarefasList)
+            .HasForeignKey(t => t.UsuarioId);
     }
 }

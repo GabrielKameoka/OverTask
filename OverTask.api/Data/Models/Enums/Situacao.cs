@@ -1,8 +1,8 @@
-﻿namespace OverTask.api.Data.Models.Enums;
+namespace OverTask.api.Data.Models.Enums;
 
 public enum Situacao
 {
-    EmAndamento,
     Pendente,
-    Finalizado
+    EmAndamento,
+    Concluida
 }

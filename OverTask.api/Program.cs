@@ -1,5 +1,5 @@
-using OverTask.api.Data;
 using Microsoft.EntityFrameworkCore;
+using OverTask.api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,20 +11,30 @@ builder.Services.AddDbContext<OverTaskDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+builder.Services.AddAuthorization();
+
+
+builder.Services.AddControllers(); 
+
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+});
+
+
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-
 app.UseHttpsRedirection();
 
-// Adiciona o roteamento de Controllers
+
 app.UseAuthorization();
-app.MapControllers();
+app.MapControllers(); 
 
 app.Run();

@@ -1,0 +1,12 @@
+C:\dev\OverTask\OverTask.Shared\bin\Debug\net9.0\OverTask.Shared.deps.json
+C:\dev\OverTask\OverTask.Shared\bin\Debug\net9.0\OverTask.Shared.dll
+C:\dev\OverTask\OverTask.Shared\bin\Debug\net9.0\OverTask.Shared.pdb
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.AssemblyInfoInputs.cache
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.AssemblyInfo.cs
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.csproj.CoreCompileInputs.cache
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.sourcelink.json
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.dll
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\refint\OverTask.Shared.dll
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\OverTask.Shared.pdb
+C:\dev\OverTask\OverTask.Shared\obj\Debug\net9.0\ref\OverTask.Shared.dll

@@ -1,8 +1,8 @@
-﻿namespace OverTask.api.Data.Models.Enums;
+namespace OverTask.api.Data.Models.Enums;
 
 public enum Categoria
 {
     Trabalho,
-    Estudos,
-    Pessoal
+    Pessoal,
+    Estudo
 }

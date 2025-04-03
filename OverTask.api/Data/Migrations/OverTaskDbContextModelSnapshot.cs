@@ -71,8 +71,7 @@ namespace OverTask.api.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
@@ -85,13 +84,13 @@ namespace OverTask.api.Migrations
 
             modelBuilder.Entity("OverTask.api.Data.Models.Tarefas", b =>
                 {
-                    b.HasOne("OverTask.api.Data.Models.Usuarios", "Usuario")
+                    b.HasOne("OverTask.api.Data.Models.Usuarios", "Usuarios")
                         .WithMany("TarefasList")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Usuario");
+                    b.Navigation("Usuarios");
                 });
 
             modelBuilder.Entity("OverTask.api.Data.Models.Usuarios", b =>
