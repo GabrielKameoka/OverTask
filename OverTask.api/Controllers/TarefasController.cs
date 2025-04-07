@@ -1,10 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using OverTask.api.Data;
 using OverTask.api.Data.Models;
-using OverTask.Shared.Models;
+using OverTask.Shared.Models.Dtos.Usuarios;
+using OverTask.Shared.Models.Dtos.Tarefas;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+using OverTask.api.Data.Models.Enums;
+using SituacaoDto = OverTask.Shared.Models.Situacao;
+using CategoriaDto = OverTask.Shared.Models.Categoria;
 
 namespace OverTask.api.Controllers;
 
@@ -19,48 +24,35 @@ public class TarefasController : ControllerBase
         _context = context;
     }
 
-    private TarefasDto MapTarefaToDto(Tarefas tarefa)
+    private TarefaReadDto MapToReadDto(Tarefas tarefa)
     {
-        return new TarefasDto
+        return new TarefaReadDto
         {
             Id = tarefa.Id,
             Titulo = tarefa.Titulo,
             Descricao = tarefa.Descricao,
             DataVencimento = tarefa.DataVencimento,
-            Situacao = (Situacao)tarefa.Situacao,
-            Categoria = (Categoria)tarefa.Categoria,
-            UsuarioId = tarefa.UsuarioId,
-            Usuarios = MapUsuarioToDto(tarefa.Usuarios)
-        };
-    }
-
-    private UsuariosDto? MapUsuarioToDto(Usuarios? usuario)
-    {
-        if (usuario == null)
-        {
-            return null;
-        }
-
-        return new UsuariosDto
-        {
-            Nome = usuario.Nome,
-            Email = usuario.Email,
-            Senha = usuario.Senha,
-            TarefasList = null
+            Situacao = (SituacaoDto)tarefa.Situacao,
+            Categoria = (CategoriaDto)tarefa.Categoria,
+            NomeUsuario = tarefa.Usuarios?.Nome // usando resumo do usuário
         };
     }
 
     // GET: api/tarefas
     [HttpGet]
-    public ActionResult<IEnumerable<TarefasDto>> GetTarefas()
+    public ActionResult<IEnumerable<TarefaReadDto>> GetTarefas()
     {
         var tarefas = _context.Tarefas.Include(t => t.Usuarios).ToList();
-        return tarefas.Select(MapTarefaToDto).ToList();
+
+        var tarefasReadDto = tarefas.Select(MapToReadDto).ToList();
+
+        return Ok(tarefasReadDto);
     }
+
 
     // GET: api/tarefas/id
     [HttpGet("{id}")]
-    public ActionResult<TarefasDto> GetTarefa(int id)
+    public ActionResult<TarefaReadDto> GetTarefa(int id)
     {
         var tarefa = _context.Tarefas.Include(t => t.Usuarios).FirstOrDefault(t => t.Id == id);
 
@@ -69,12 +61,12 @@ public class TarefasController : ControllerBase
             return NotFound();
         }
 
-        return MapTarefaToDto(tarefa);
+        return Ok(MapToReadDto(tarefa));
     }
 
     //POST: api/tarefas
     [HttpPost]
-    public ActionResult<TarefasDto> PostTarefa(TarefasDto tarefaDto)
+    public ActionResult<TarefaCreateDto> PostTarefa(TarefaCreateDto tarefaDto)
     {
         var tarefa = new Tarefas
         {
@@ -89,17 +81,24 @@ public class TarefasController : ControllerBase
         _context.Tarefas.Add(tarefa);
         _context.SaveChanges();
 
-        var tarefaDtoRetornado = MapTarefaToDto(tarefa);
+        var tarefaReadDto = new TarefaReadDto
+        {
+            Id = tarefa.Id,
+            Titulo = tarefa.Titulo,
+            Descricao = tarefaDto.Descricao,
+            DataVencimento = tarefaDto.DataVencimento,
+            Situacao = (SituacaoDto)tarefa.Situacao,
+            Categoria = (CategoriaDto)tarefaDto.Categoria,
+            NomeUsuario = tarefa.Usuarios?.Nome
+        };
 
-        return CreatedAtAction(nameof(GetTarefa), new { id = tarefa.Id }, tarefaDtoRetornado);
+        return CreatedAtAction(nameof(GetTarefa), new { id = tarefa.Id }, tarefaReadDto);
     }
 
     //PUT: api/tarefas/id
     [HttpPut("{id}")]
-    public IActionResult PutTarefa(int id, TarefasDto tarefaDto)
+    public IActionResult PutTarefa(int id, TarefaUpdateDto tarefaDto)
     {
-        if (id != tarefaDto.Id)
-            return BadRequest();
 
         var tarefa = _context.Tarefas.FirstOrDefault(t => t.Id == id);
 
@@ -111,6 +110,21 @@ public class TarefasController : ControllerBase
         tarefa.Situacao = (Data.Models.Enums.Situacao)tarefaDto.Situacao;
 
         _context.Tarefas.Update(tarefa);
+        _context.SaveChanges();
+
+        return NoContent();
+    }
+    
+    //DELETE: api/tarefas/id
+    [HttpDelete("{id}")]
+    public IActionResult DeleteTarefa(int id)
+    {
+        var tarefa = _context.Tarefas.FirstOrDefault(t => t.Id == id);
+        
+        if (tarefa == null)
+            return NotFound();
+        
+        _context.Tarefas.Remove(tarefa);
         _context.SaveChanges();
 
         return NoContent();

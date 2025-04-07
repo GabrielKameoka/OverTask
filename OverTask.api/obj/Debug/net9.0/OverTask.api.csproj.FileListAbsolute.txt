@@ -164,3 +164,4 @@ C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\refint\OverTask.api.dll
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.api.pdb
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.api.genruntimeconfig.cache
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\ref\OverTask.api.dll
+C:\dev\OverTask\OverTask.api\bin\Debug\net9.0\BCrypt.Net-Next.dll

@@ -1,16 +1,23 @@
-using System;
-using OverTask.Shared.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace OverTask.Shared.Models;
+namespace OverTask.Shared.Models.Dtos.Tarefas;
 
-public class TarefasDto
+public class TarefaCreateDto
 {
-    public int Id { get; set; }
+    [Required]
     public required string Titulo { get; set; }
+
+    [Required]
     public required string Descricao { get; set; }
+
     public DateOnly DataVencimento { get; set; }
+
+    [Required]
     public Situacao Situacao { get; set; }
+
+    [Required]
     public Categoria Categoria { get; set; }
+
+    [Required]
     public int UsuarioId { get; set; }
-    public UsuariosDto? Usuarios { get; set; }
 }

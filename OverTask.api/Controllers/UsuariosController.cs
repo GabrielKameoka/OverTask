@@ -1,10 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using OverTask.api.Data;
 using OverTask.api.Data.Models;
-using OverTask.Shared.Models;
+using OverTask.Shared.Models.Dtos.Usuarios;
+using OverTask.Shared.Models.Dtos.Tarefas;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+using OverTask.api.Data.Models.Enums;
+using SituacaoDto = OverTask.Shared.Models.Situacao;
+using CategoriaDto = OverTask.Shared.Models.Categoria;
+
 
 namespace OverTask.api.Controllers;
 
@@ -19,45 +25,56 @@ public class UsuariosController : ControllerBase
         _context = context;
     }
 
-    private UsuariosDto MapUsuarioToDto(Usuarios usuario)
+    private UsuarioReadDto MapToReadDto(Usuarios usuario)
     {
-        return new UsuariosDto
+        return new UsuarioReadDto
         {
+            Id = usuario.Id,
             Nome = usuario.Nome,
             Email = usuario.Email,
-            Senha = usuario.Senha,
-            TarefasList = usuario.TarefasList.Select(MapTarefaToDto).ToList()
+            TarefasList = usuario.TarefasList.Select(t => new TarefaResumoDto
+            {
+                Id = t.Id,
+                Titulo = t.Titulo,
+                Situacao = (OverTask.Shared.Models.Situacao)t.Situacao
+            }).ToList()
         };
     }
 
-    private TarefasDto MapTarefaToDto(Tarefas tarefa)
+
+
+    private TarefaReadDto MapTarefaToDto(Tarefas tarefa)
     {
-        return new TarefasDto
+        return new TarefaReadDto
         {
             Id = tarefa.Id,
             Titulo = tarefa.Titulo,
             Descricao = tarefa.Descricao,
             DataVencimento = tarefa.DataVencimento,
-            Situacao = (Situacao)tarefa.Situacao,
-            Categoria = (Categoria)tarefa.Categoria,
-            UsuarioId = tarefa.UsuarioId,
-            Usuarios = null
+            Situacao = (SituacaoDto)tarefa.Situacao,
+            Categoria = (CategoriaDto)tarefa.Categoria,
+            NomeUsuario = tarefa.Usuarios?.Nome
         };
     }
 
 
+
+
     //GET: api/usuarios
     [HttpGet]
-    public ActionResult<IEnumerable<UsuariosDto>> GetUsuarios()
+    public ActionResult<UsuarioReadDto> GetUsuario()
     {
         var usuarios = _context.Usuarios.Include(u => u.TarefasList).ToList();
-        return usuarios.Select(MapUsuarioToDto).ToList();
+
+        var usuariosReadDto = usuarios.Select(MapToReadDto).ToList();
+
+        return Ok(usuariosReadDto);
     }
 
 
     //GET: api/usuarios/id
     [HttpGet("{id}")]
-    public ActionResult<UsuariosDto> GetUsuario(int id)
+    public ActionResult<UsuarioReadDto> GetUsuario(int id)
     {
         var usuario = _context.Usuarios.Include(u => u.TarefasList).FirstOrDefault(u => u.Id == id);
 
@@ -66,66 +83,104 @@ public class UsuariosController : ControllerBase
             return NotFound();
         }
 
-        return MapUsuarioToDto(usuario);
+        var usuarioReadDto = new UsuarioReadDto
+        {
+            Id = usuario.Id,
+            Nome = usuario.Nome,
+            Email = usuario.Email,
+            TarefasList = usuario.TarefasList.Select(t => new TarefaResumoDto
+            {
+                Id = t.Id,
+                Titulo = t.Titulo,
+                Situacao = (SituacaoDto)t.Situacao
+            }).ToList()
+        };
+
+        return Ok(usuarioReadDto);
     }
 
 
     //Post: api/usuarios
     [HttpPost]
-    public ActionResult<UsuariosDto> PostUsuario(UsuariosDto usuarioDto)
+    public ActionResult<UsuarioCreateDto> PostUsuario(UsuarioCreateDto usuarioDto)
     {
         var usuario = new Usuarios
         {
             Nome = usuarioDto.Nome,
             Email = usuarioDto.Email,
-            Senha = usuarioDto.Senha
+            Senha = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha)
         };
 
         _context.Usuarios.Add(usuario);
         _context.SaveChanges();
 
-        var usuarioDtoRetornado = MapUsuarioToDto(usuario);
+        var usuarioReadDto = new UsuarioReadDto
+        {
+            Id = usuario.Id,
+            Nome = usuario.Nome,
+            Email = usuario.Email,
+            TarefasList = new List<TarefaResumoDto>()
+        };
 
-        return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuarioDtoRetornado);
+        return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuarioReadDto);
     }
 
 
-    //Put: api/usuarios
+    //Put: api/usuarios/id
     [HttpPut("{id}")]
-    public ActionResult<UsuariosDto> PutUsuario(int id, UsuariosDto usuarioDto)
+    public ActionResult PutUsuario(int id, UsuarioUpdateDto usuarioDto)
     {
-        if (id != usuarioDto.Id)
-            return BadRequest();
-        
+
         var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
-        
+
         if (usuario == null)
-            return NotFound();
-        
+            return NotFound("Usuário não encontrado.");
+
         usuario.Nome = usuarioDto.Nome;
         usuario.Email = usuarioDto.Email;
-        usuario.Senha = usuarioDto.Senha;
-        
-        _context.Usuarios.Update(usuario);
-        _context.SaveChanges();
+        usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha);
 
-        return usuarioDto;
+        _context.Usuarios.Update(usuario);
+
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao atualizar usuário: {ex.Message}");
+            return StatusCode(500, "Erro interno ao processar a solicitação.");
+        }
+
+        return NoContent();
     }
     
     
     //DELETE: api/usuarios
     [HttpDelete("{id}")]
-    public ActionResult<UsuariosDto> DeleteUsuario(int id)
+    public ActionResult DeleteUsuario(int id)
     {
-        
-        var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
-        
+        var usuario = _context.Usuarios.Include(u => u.TarefasList).FirstOrDefault(u => u.Id == id);
+
         if (usuario == null)
-            return NotFound();
+            return NotFound("Usuário não encontrado.");
+
+        if (usuario.TarefasList.Any())  
+            return BadRequest("Não é possível excluir um usuário com tarefas associadas.");
 
         _context.Remove(usuario);
-        _context.SaveChanges();
+
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao excluir usuário: {ex.Message}");
+            return StatusCode(500, "Erro interno ao processar a solicitação.");
+        }
 
         return NoContent();
     }
+
 }
