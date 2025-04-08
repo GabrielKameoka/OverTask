@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+
+<div class="bg-base-light min-h-screen flex flex-col bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="text-primary ">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-semibold">OverTask</h1>
+            <nav class="space-x-4">
+                <a href="/login" class="hover:underline">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-grow container mx-auto px-4 py-6">
+        @Body
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white text-center py-4 mt-8">
+        &copy; @DateTime.Now.Year - OverTask. Todos os direitos reservados.
+    </footer>
+</div>

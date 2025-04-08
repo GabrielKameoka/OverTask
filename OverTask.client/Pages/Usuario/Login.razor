@@ -1,0 +1,26 @@
+@page "/login"
+@using OverTask.Shared.Models.Dtos.Usuarios
+@inject HttpClient Http
+
+<h1>Login</h1>
+<p>Entre com seu cadastro</p>
+
+
+
+
+
+@code {
+    private List<UsuarioReadDto>? usuarios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            usuarios = await Http.GetFromJsonAsync<List<UsuarioReadDto>>("api/usuarios");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro: {ex.Message}");
+        }
+    }
+}
