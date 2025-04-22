@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OverTask.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be05e22457b9a856cc8869e0e97a169da8bc6315")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbd88a4fb10dfcfc2c7b516878ed079e7d5c4c10")]
 [assembly: System.Reflection.AssemblyProductAttribute("OverTask.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OverTask.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

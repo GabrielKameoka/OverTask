@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
-using OverTask.api.Data;
-using OverTask.api.Data.Models;
-using OverTask.Shared.Models.Dtos.Usuarios;
-using OverTask.Shared.Models.Dtos.Tarefas;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OverTask.api.Data;
+using OverTask.api.Data.Models;
 using OverTask.api.Data.Models.Enums;
-using SituacaoDto = OverTask.Shared.Models.Situacao;
+using OverTask.Shared.Models.Dtos.Tarefas;
+using OverTask.Shared.Models.Dtos.Usuarios;
 using CategoriaDto = OverTask.Shared.Models.Categoria;
+using SituacaoDto = OverTask.Shared.Models.Situacao;
 
 
 namespace OverTask.api.Controllers;
@@ -62,7 +62,7 @@ public class UsuariosController : ControllerBase
 
     //GET: api/usuarios
     [HttpGet]
-    public ActionResult<UsuarioReadDto> GetUsuario()
+    public ActionResult<List<UsuarioReadDto>> GetUsuario()
     {
         var usuarios = _context.Usuarios.Include(u => u.TarefasList).ToList();
 
@@ -70,6 +70,8 @@ public class UsuariosController : ControllerBase
 
         return Ok(usuariosReadDto);
     }
+
+
 
 
     //GET: api/usuarios/id
