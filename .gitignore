@@ -1,0 +1,151 @@
+# Arquivo .gitignore para projetos .NET
+
+## Ignorar arquivos gerados pelo IDE ##
+*.swp
+*.*~
+*.sln.iml
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ide/
+*.vs/
+.vs/
+**/*.vspscc
+**/*.vssscc
+
+## Ignorar arquivos de build ##
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.config
+*.application
+*.manifest
+*.xap
+*.zip
+*.msi
+*.cab
+*.nupkg
+*.ncrunchproject
+*.ncrunchsolution
+
+## Ignorar logs e arquivos temporários ##
+[Tt]emp/
+*.log
+*.tlog
+*.log*
+*.tmp
+*.temp
+*.pid
+*.pidb
+
+## Ignorar arquivos do Visual Studio Code ##
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Ignorar arquivos do Rider ##
+.idea/
+*.sln.iml
+*.DotSettings
+*.DotSettings.user
+*.rider
+.rider/
+
+## Ignorar arquivos do Azure ##
+[Aa]zure/
+*.azureconfig
+
+## Ignorar arquivos do Docker ##
+[Dd]ocker/
+docker-compose.*.yml
+docker-compose.*.yaml
+*.dockerignore
+
+## Ignorar arquivos de publicação ##
+[Pp]ublish/
+[Pp]ublic/
+*.pubxml
+
+## Ignorar arquivos de teste ##
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.testsettings
+*.trx
+*.coverage
+.coverage
+
+## Ignorar pacotes NuGet ##
+[Nn]uget/
+*.nupkg
+**/packages/*
+!**/packages/repositories.config
+.nuget/
+nuget.exe
+
+## Ignorar arquivos de banco de dados local ##
+*.mdf
+*.ldf
+*.sdf
+App_Data/
+
+## Ignorar arquivos de ambiente ##
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+## Ignorar arquivos do macOS ##
+.DS_Store
+
+## Ignorar arquivos do Windows ##
+Thumbs.db
+ehthumbs.db
+
+## Ignorar arquivos de backup ##
+*.[Bb]ackup.*
+*.backup
+*.bak
+
+## Ignorar arquivos de migração (Entity Framework) - mantenha apenas os de produção ##
+[Mm]igrations/*.Designer.cs
+[Mm]igrations/*.resx
+[Mm]igrations/*_*.cs
+
+## Ignorar arquivos específicos do projeto ##
+*.opensdf
+*.sdf
+*.ipch
+*.db
+*.db-journal
+
+## Ignorar arquivos de certificados ##
+*.pfx
+*.cer
+*.crt
+*.key
+
+## Ignorar arquivos de configuração local ##
+appsettings.Local.json
+appsettings.Development.Local.json
+appsettings.*.Local.json
+
+## Ignorar arquivos de análise de código ##
+*.lastcodeanalysisds
+*.analysisds
+
+# Exceções - não ignore esses arquivos importantes !
+!**/packages/repositories.config
+!.nuget/NuGet.Config
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
