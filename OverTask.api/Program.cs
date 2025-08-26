@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using OverTask.api.Controllers;
 using OverTask.api.Data;
 using OverTask.api.Controllers;
+using OverTask.api.Repositories;
+using OverTask.api.Repositories.Interfaces;
 using OverTask.api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +31,10 @@ builder.Services.AddDbContext<OverTaskDbContext>(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+
+// Implementações do Repository Pattern
+builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+builder.Services.AddScoped<ITarefasRepository, TarefasRepository>();
 
 
 var app = builder.Build();

@@ -152,12 +152,6 @@ C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\scopedcss\bundle\OverTask.api.styl
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets.build.json
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets.development.json
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets\msbuild.OverTask.api.Microsoft.AspNetCore.StaticWebAssets.props
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets\msbuild.OverTask.api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets\msbuild.build.OverTask.api.props
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.OverTask.api.props
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.OverTask.api.props
-C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets.pack.json
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.DD541AA7.Up2Date
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.api.dll
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\refint\OverTask.api.dll
@@ -165,3 +159,8 @@ C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.api.pdb
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\OverTask.api.genruntimeconfig.cache
 C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\ref\OverTask.api.dll
 C:\dev\OverTask\OverTask.api\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\dev\OverTask\OverTask.api\obj\Debug\net9.0\staticwebassets.build.json.cache

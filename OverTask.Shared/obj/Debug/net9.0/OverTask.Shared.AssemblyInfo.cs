@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OverTask.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be05e22457b9a856cc8869e0e97a169da8bc6315")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e7fbd7bf3d0a49bcc0eceedba607d0669e7f49e")]
 [assembly: System.Reflection.AssemblyProductAttribute("OverTask.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OverTask.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

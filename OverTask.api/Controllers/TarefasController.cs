@@ -1,15 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
-using BCrypt.Net;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OverTask.api.Data;
-using OverTask.api.Data.Models;
-using OverTask.api.Data.Models.Enums;
+using OverTask.api.Repositories.Interfaces;
 using OverTask.Shared.Models.Dtos.Tarefas;
-using OverTask.Shared.Models.Dtos.Usuarios;
-using CategoriaDto = OverTask.Shared.Models.Categoria;
-using SituacaoDto = OverTask.Shared.Models.Situacao;
 
 namespace OverTask.api.Controllers;
 
@@ -17,116 +8,100 @@ namespace OverTask.api.Controllers;
 [Route("api/tarefas")]
 public class TarefasController : ControllerBase
 {
-    private readonly OverTaskDbContext _context;
+    private readonly ITarefasRepository _tarefasRepository;
 
-    public TarefasController(OverTaskDbContext context)
+    public TarefasController(ITarefasRepository tarefasRepository)
     {
-        _context = context;
+        _tarefasRepository = tarefasRepository;
     }
 
-    private TarefaReadDto MapToReadDto(Tarefas tarefa)
-    {
-        return new TarefaReadDto
-        {
-            Id = tarefa.Id,
-            Titulo = tarefa.Titulo,
-            Descricao = tarefa.Descricao,
-            DataVencimento = tarefa.DataVencimento,
-            Situacao = (SituacaoDto)tarefa.Situacao,
-            Categoria = (CategoriaDto)tarefa.Categoria,
-            NomeUsuario = tarefa.Usuarios?.Nome // usando resumo do usuário
-        };
-    }
-
-    // GET: api/tarefas
     [HttpGet]
     public ActionResult<IEnumerable<TarefaReadDto>> GetTarefas()
     {
-        var tarefas = _context.Tarefas.Include(t => t.Usuarios).ToList();
-
-        var tarefasReadDto = tarefas.Select(MapToReadDto).ToList();
-
-        return Ok(tarefasReadDto);
+        var tarefas = _tarefasRepository.GetTarefas();
+        return Ok(tarefas);
     }
 
-
-    // GET: api/tarefas/id
     [HttpGet("{id}")]
     public ActionResult<TarefaReadDto> GetTarefa(int id)
     {
-        var tarefa = _context.Tarefas.Include(t => t.Usuarios).FirstOrDefault(t => t.Id == id);
+        var tarefa = _tarefasRepository.GetTarefa(id);
 
         if (tarefa == null)
         {
             return NotFound();
         }
 
-        return Ok(MapToReadDto(tarefa));
+        return Ok(tarefa);
     }
 
-    //POST: api/tarefas
     [HttpPost]
-    public ActionResult<TarefaCreateDto> PostTarefa(TarefaCreateDto tarefaDto)
+    public ActionResult<TarefaReadDto> PostTarefa(TarefaCreateDto tarefaDto)
     {
-        var tarefa = new Tarefas
+        if (!ModelState.IsValid)
         {
-            Titulo = tarefaDto.Titulo,
-            Descricao = tarefaDto.Descricao,
-            DataVencimento = tarefaDto.DataVencimento,
-            Situacao = (OverTask.api.Data.Models.Enums.Situacao)tarefaDto.Situacao,
-            Categoria = (OverTask.api.Data.Models.Enums.Categoria)tarefaDto.Categoria,
-            UsuarioId = tarefaDto.UsuarioId
-        };
+            return BadRequest(ModelState);
+        }
 
-        _context.Tarefas.Add(tarefa);
-        _context.SaveChanges();
-
-        var tarefaReadDto = new TarefaReadDto
+        try
         {
-            Id = tarefa.Id,
-            Titulo = tarefa.Titulo,
-            Descricao = tarefaDto.Descricao,
-            DataVencimento = tarefaDto.DataVencimento,
-            Situacao = (SituacaoDto)tarefa.Situacao,
-            Categoria = (CategoriaDto)tarefaDto.Categoria,
-            NomeUsuario = tarefa.Usuarios?.Nome
-        };
+            var tarefaCriada = _tarefasRepository.PostTarefa(tarefaDto);
+            
+            if (tarefaCriada == null)
+            {
+                return BadRequest("Erro ao criar tarefa");
+            }
 
-        return CreatedAtAction(nameof(GetTarefa), new { id = tarefa.Id }, tarefaReadDto);
+            return CreatedAtAction(nameof(GetTarefa), new { id = tarefaCriada.Id }, tarefaCriada);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
-    //PUT: api/tarefas/id
     [HttpPut("{id}")]
     public IActionResult PutTarefa(int id, TarefaUpdateDto tarefaDto)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
 
-        var tarefa = _context.Tarefas.FirstOrDefault(t => t.Id == id);
+        try
+        {
+            var result = _tarefasRepository.PutTarefa(id, tarefaDto); // Passa o ID da URL
+            
+            if (result == null)
+            {
+                return NotFound("Tarefa não encontrada");
+            }
 
-        if (tarefa == null)
-            return NotFound();
-
-        tarefa.Titulo = tarefaDto.Titulo;
-        tarefa.Descricao = tarefaDto.Descricao;
-        tarefa.Situacao = (Data.Models.Enums.Situacao)tarefaDto.Situacao;
-
-        _context.Tarefas.Update(tarefa);
-        _context.SaveChanges();
-
-        return NoContent();
+            return Ok(result); // Retorna a tarefa atualizada
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
     
-    //DELETE: api/tarefas/id
     [HttpDelete("{id}")]
     public IActionResult DeleteTarefa(int id)
     {
-        var tarefa = _context.Tarefas.FirstOrDefault(t => t.Id == id);
-        
-        if (tarefa == null)
-            return NotFound();
-        
-        _context.Tarefas.Remove(tarefa);
-        _context.SaveChanges();
+        try
+        {
+            var result = _tarefasRepository.DeletarTarefa(id);
+            
+            if (!result)
+            {
+                return NotFound("Tarefa não encontrada");
+            }
 
-        return NoContent();
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erro interno: {ex.Message}");
+        }
     }
 }

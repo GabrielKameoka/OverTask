@@ -11,5 +11,5 @@ public class UsuarioCreateDto
     public required string Email { get; set; }
 
     [Required, MinLength(6)]
-    public required string Senha { get; set; }
+    public string Senha { get; set; }
 }
